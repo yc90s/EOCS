@@ -20,7 +20,7 @@ class Parser final
         // read next commands if has more commands
         void advance();             
 
-        CommandType command_type() const;
+        const CommandType command_type() const;
 
         // only for A_COMMAND or L_COMMAND, return command's symbol
         const std::string symbol() const;   

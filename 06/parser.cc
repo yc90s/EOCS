@@ -51,7 +51,7 @@ void Parser::advance()
     }
 }
 
-CommandType Parser::command_type() const
+const CommandType Parser::command_type() const
 {
     if (curr_command_)
     {

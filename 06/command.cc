@@ -34,7 +34,7 @@ ACommand::ACommand(const std::string& command_string)
     command_.erase(0, 1);
 }
 
-CommandType ACommand::command_type() const
+const CommandType ACommand::command_type() const
 {
     return CommandType::A_COMMAND;
 }
@@ -104,7 +104,7 @@ CCommand::CCommand(const std::string& command_string)
     }
 }
 
-CommandType CCommand::command_type() const
+const CommandType CCommand::command_type() const
 {
     return CommandType::C_COMMAND;
 }
@@ -149,7 +149,7 @@ LCommand::LCommand(const std::string& command_string)
     command_ = command_.substr(1, command_string.length() - 2);
 }
 
-CommandType LCommand::command_type() const
+const CommandType LCommand::command_type() const
 {
     return CommandType::L_COMMAND;
 }

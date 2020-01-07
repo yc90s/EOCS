@@ -27,7 +27,7 @@ class Command
         const std::string& command_string() const { return origin_command_; }
 
     public:
-        virtual CommandType command_type() const = 0;
+        virtual const CommandType command_type() const = 0;
         virtual bool encode(const Code&, Symbol&, unsigned int, std::string&) = 0;
         virtual const std::string symbol() const { return std::string(); }
         virtual const std::string dest() const { return std::string(); }
@@ -51,7 +51,7 @@ class ACommand: public Command
         ACommand& operator= (const ACommand&) = delete;
 
     public:
-        CommandType command_type() const override;
+        const CommandType command_type() const override;
         bool encode(const Code&, Symbol&, unsigned int, std::string&) override;
         const std::string symbol() const override;
 };
@@ -65,7 +65,7 @@ class CCommand: public Command
         CCommand& operator= (const CCommand&) = delete;
 
     public:
-        CommandType command_type() const override;
+        const CommandType command_type() const override;
         bool encode(const Code&, Symbol&, unsigned int, std::string&) override;
         const std::string dest() const override;
         const std::string comp() const override;
@@ -87,7 +87,7 @@ class LCommand: public Command
         LCommand& operator= (const LCommand&) = delete;
 
     public:
-        CommandType command_type() const override;
+        const CommandType command_type() const override;
         bool encode(const Code&, Symbol&, unsigned int, std::string&) override;
         const std::string symbol() const override;
 };
