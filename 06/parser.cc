@@ -1,6 +1,5 @@
 #include "parser.h"
 #include <algorithm>
-#include <cctype>
 
 Parser::Parser(const std::string& prog)
     : curr_command_(nullptr),
