@@ -12,7 +12,7 @@ std::string output_filename(const char* file)
     }
     else
     {
-        result.replace(pos, 4, ".hack");
+        result.replace(pos, result.length() - pos, ".hack");
     }
 
     return result;
