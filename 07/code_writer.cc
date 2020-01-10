@@ -44,6 +44,14 @@ void CodeWriter::set_file_name(const std::string& filename)
 {
     std::size_t pos = filename.find_last_of(".");
     curr_vm_file_name_ = filename.substr(0, pos);
+
+    for (auto& c : curr_vm_file_name_)
+    {
+        if  (c == '/')
+        {
+            c = '$';
+        }
+    }
 }
 
 bool CodeWriter::write_arithmetic(const std::string& command)
@@ -93,7 +101,6 @@ void CodeWriter::translate_argument(CommandArgs const& args)
 D=A\n\
 @ARG\n\
 A=M+D\n\
-A=M\n\
 ";
 }
 
@@ -104,7 +111,6 @@ void CodeWriter::translate_local(CommandArgs const& args)
 D=A\n\
 @LCL\n\
 A=M+D\n\
-A=M\n\
 ";
 }
 
@@ -125,7 +131,6 @@ void CodeWriter::translate_this(CommandArgs const& args)
 D=A\n\
 @THIS\n\
 A=M+D\n\
-A=M\n\
 ";
 }
 
@@ -136,7 +141,6 @@ void CodeWriter::translate_that(CommandArgs const& args)
 D=A\n\
 @THAT\n\
 A=M+D\n\
-A=M\n\
 ";
 }
 
@@ -147,7 +151,6 @@ void CodeWriter::translate_pointer(CommandArgs const& args)
 D=A\n\
 @THIS\n\
 A=D+A\n\
-A=M\n\
 ";
 }
 
@@ -158,7 +161,6 @@ void CodeWriter::translate_temp(CommandArgs const& args)
 D=A\n\
 @5\n\
 A=D+A\n\
-A=M\n\
 ";
 }
 
@@ -424,6 +426,7 @@ bool HackCodeWriter::op_pop(CommandArgs const& args)
 D=A\n\
 @SP\n\
 M=M-1\n\
+A=M\n\
 A=M\n\
 D=D+A\n\
 A=D-A\n\
